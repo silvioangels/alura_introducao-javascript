@@ -25,12 +25,14 @@ for (var i = 0; i < pacientes.length; i++) {
     pesoEhValido = false;
     console.log("Peso Inválido!!");
     tdImc.textContent = "Peso Inválido!!";
+    paciente.classList.add("paciente-invalido");
   }
 
   if(altura < 0 || altura > 3.00){
     alturaEhValido = false;
     console.log("Altura Inválida!!");
     tdImc.textContent = "Altura Inválida!!";
+    paciente.classList.add("paciente-invalido");
   }
 
   if(pesoEhValido && alturaEhValido){
