@@ -12,16 +12,26 @@ var peso     = tdPeso.textContent;
 var tdAltura   = paciente.querySelector(".info-altura");
 var altura     = tdAltura.textContent;
 
-console.log(paciente);
-
-console.log(tdPeso);
-console.log(peso);
-
-console.log(tdAltura);
-console.log(altura);
-
-var imc = peso / (altura * altura);
-console.log(imc);
-
 var tdImc   = paciente.querySelector(".info-imc");
-tdImc.textContent = imc;
+
+var pesoEhValido = true;
+var alturaEhValido = true;
+
+if(peso < 0 || peso > 1000){
+  pesoEhValido = false;
+  console.log("Peso Inválido!!");
+  tdImc.textContent = "Peso Inválido!!";
+}
+
+if(altura < 0 || altura > 3.00){
+  alturaEhValido = false;
+  console.log("Altura Inválida!!");
+  tdImc.textContent = "Altura Inválida!!";
+}
+
+if(pesoEhValido && alturaEhValido){
+  var imc = peso / (altura * altura);
+  console.log(imc);
+
+  tdImc.textContent = imc;
+}
