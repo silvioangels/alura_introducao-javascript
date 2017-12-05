@@ -32,7 +32,7 @@ for (var i = 0; i < pacientes.length; i++) {
   }
 
   if(pesoEhValido && alturaEhValido){
-    tdImc.textContent = calculaImc(peso, altura);
+    tdImc.textContent = imc.toFixed(2);
   }
 
 }
