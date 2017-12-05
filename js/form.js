@@ -10,9 +10,10 @@ botaoAdicionar.addEventListener("click",function(event){
 
   var erros = validaPaciente(paciente);
 
+  limparMensagemErros();
+
   if(erros.length > 0){
-    var mensagemErro = document.querySelector("#mensagem-erro");
-    mensagemErro.textContent = erro;
+    exibeMensagemErros(erros);
     return;
   }
 
@@ -65,6 +66,22 @@ function validaPaciente(paciente){
 
       var erros = [];
 
+      if(paciente.nome.length == 0){
+        erros.push("O Nome não pode ser em branco");
+      }
+
+      if(paciente.peso.length == 0){
+        erros.push("O Peso não pode ser em branco");
+      }
+
+      if(paciente.altura.length == 0){
+        erros.push("A Altura não pode ser em branco");
+      }
+
+      if(paciente.gordura.length == 0){
+        erros.push("A Gordura não pode ser em branco");
+      }
+
       if(!validaPeso(paciente.peso)){
         erros.push("O Peso é invalido");
       }
@@ -74,5 +91,20 @@ function validaPaciente(paciente){
       }
 
       return erros;
+}
 
+function exibeMensagemErros(erros){
+
+  var ul = document.querySelector("#mensagens-erro");
+  erros.forEach(function(erro){
+    var li = document.createElement("li");
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
+
+}
+
+function limparMensagemErros(){
+  var ul = document.querySelector("#mensagens-erro");
+  ul.innerHTML = "";
 }
